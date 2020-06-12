@@ -102,6 +102,7 @@ extension JTACMonthView {
         // force a scroll so the delegate MUST get caalled
         let theOffset = scrollDirection == .horizontal ? offset.x : offset.y
         let divValue = scrollDirection == .horizontal ? frame.width : frame.height
+        if theOffset.isNaN || divValue.isNaN || divValue == 0 { return true }
         let sectionForOffset = Int(theOffset / divValue)
         let calendarCurrentOffset = scrollDirection == .horizontal ? contentOffset.x : contentOffset.y
         if calendarCurrentOffset == theOffset || (scrollingMode.pagingIsEnabled() && (sectionForOffset ==  currentSection())) {
